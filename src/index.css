@@ -1,0 +1,362 @@
+:root {
+  --bg: #f4f7fb;
+  --card: #ffffff;
+  --ink: #0f172a;
+  --muted: #64748b;
+  --line: #e2e8f0;
+  --brand: #0f766e;
+  --brand-soft: #ccfbf1;
+  --good: #15803d;
+  --good-soft: #dcfce7;
+  --warn: #b45309;
+  --warn-soft: #fef3c7;
+  --bad: #b91c1c;
+  --bad-soft: #fee2e2;
+  --blue: #1d4ed8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app {
+  flex: 1;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px 20px 96px;
+}
+
+/* ---- Header ---- */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.header .dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, var(--brand), #14b8a6);
+  box-shadow: 0 2px 6px rgba(15, 118, 110, 0.35);
+}
+.header h1 {
+  font-size: 22px;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.header .tag {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 0 0 18px;
+}
+
+/* ---- Cards ---- */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+  margin-bottom: 16px;
+}
+.card h2 {
+  margin: 0 0 4px;
+  font-size: 17px;
+}
+.card .sub {
+  color: var(--muted);
+  font-size: 13.5px;
+  margin: 0 0 16px;
+}
+
+/* ---- Biomarker selector ---- */
+.chipGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.chip {
+  border: 1.5px solid var(--line);
+  background: #fafcff;
+  border-radius: 12px;
+  padding: 10px 12px;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.chip:hover {
+  border-color: #99f6e4;
+}
+.chip.active {
+  border-color: var(--brand);
+  background: var(--brand-soft);
+}
+.chip .name {
+  font-weight: 600;
+  font-size: 14px;
+}
+.chip .meta {
+  font-size: 11.5px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+.chip .range {
+  font-size: 11.5px;
+  color: var(--blue);
+  margin-top: 4px;
+  font-weight: 600;
+}
+
+/* ---- Fields ---- */
+.fields {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+.field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.field .hint {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 400;
+}
+.field input {
+  width: 100%;
+  font-size: 20px;
+  padding: 10px 8px;
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+.field input:focus {
+  border-color: var(--brand);
+}
+.field input.invalid {
+  border-color: var(--bad);
+}
+
+.zeros {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 8px 0 0;
+  text-align: center;
+}
+
+/* ---- Buttons ---- */
+.row {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+.btn {
+  border: none;
+  border-radius: 10px;
+  padding: 12px 18px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: transform 0.05s ease, filter 0.15s ease;
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn-primary {
+  background: var(--brand);
+  color: #fff;
+}
+.btn-primary:hover {
+  filter: brightness(1.05);
+}
+.btn-primary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.btn-ghost {
+  background: transparent;
+  border: 1.5px solid var(--line);
+  color: var(--ink);
+}
+.btn-ghost:hover {
+  background: #f1f5f9;
+}
+.btn-block {
+  width: 100%;
+}
+
+/* ---- Check screen ---- */
+.checkWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 48px 20px;
+}
+.spinner {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 4px solid var(--brand-soft);
+  border-top-color: var(--brand);
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.checkMsg {
+  color: var(--muted);
+  text-align: center;
+  font-size: 14px;
+}
+
+/* ---- Flag banner ---- */
+.flag {
+  border-radius: 14px;
+  padding: 18px;
+  color: #fff;
+  margin-bottom: 16px;
+}
+.flag-good {
+  background: var(--good);
+}
+.flag-warn {
+  background: var(--warn);
+}
+.flag-bad {
+  background: var(--bad);
+}
+.flag h2 {
+  margin: 0 0 4px;
+  font-size: 19px;
+}
+.flag p {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.95;
+}
+
+/* ---- Result bullets ---- */
+.bullets {
+  margin: 0 0 16px;
+  padding-left: 2px;
+  list-style: none;
+}
+.bullets li {
+  display: flex;
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+}
+.bullets li:last-child {
+  border-bottom: none;
+}
+.bullets li::before {
+  content: '•';
+  color: var(--brand);
+  font-weight: 700;
+}
+.cta {
+  background: #f8fafc;
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 13.5px;
+  color: var(--ink);
+}
+
+/* ---- Chart ---- */
+.chartCard .legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  display: inline-block;
+}
+.swatch-green {
+  background: rgba(22, 163, 74, 0.18);
+  border: 1px solid rgba(22, 163, 74, 0.4);
+}
+.swatch-blue {
+  height: 0;
+  border-top: 2px dashed var(--blue);
+  width: 16px;
+  border-radius: 0;
+}
+.swatch-dot {
+  background: var(--muted);
+  border-radius: 50%;
+}
+
+/* ---- Disclaimer footer ---- */
+.disclaimer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #1e293b;
+  color: #cbd5e1;
+  font-size: 12.5px;
+  text-align: center;
+  padding: 12px 20px;
+  z-index: 10;
+  border-top: 3px solid var(--warn);
+}
+.disclaimer strong {
+  color: #fbbf24;
+}
+
+@media (max-width: 640px) {
+  .fields {
+    grid-template-columns: 1fr 1fr;
+  }
+  .chipGrid {
+    grid-template-columns: 1fr;
+  }
+}
