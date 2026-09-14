@@ -8,3 +8,4 @@ dist
 *.tsbuildinfo
 .pdf
 .ppt
+SESSION_CONTEXT.md
